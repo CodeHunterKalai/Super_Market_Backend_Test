@@ -1,15 +1,14 @@
-# Use stable Java 17 image (Render supports this)
+# Use a stable Java 17 base image
 FROM eclipse-temurin:17-jdk
 
-# Create working directory inside container
+# Create /app inside container
 WORKDIR /app
 
-# Copy the built jar from target folder into container
-# IMPORTANT: mvn clean package must be run before deploy
+# Copy the compiled jar into the image
 COPY target/*.jar app.jar
 
-# Expose Spring Boot port
+# Expose the Spring Boot port
 EXPOSE 8080
 
-# Run the Spring Boot application
+# Run the Spring Boot JAR
 ENTRYPOINT ["java","-jar","/app/app.jar"]
