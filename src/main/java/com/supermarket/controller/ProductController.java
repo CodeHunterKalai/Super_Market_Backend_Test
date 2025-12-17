@@ -19,11 +19,6 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping("/api/cron/keep-alive")
-    public ResponseEntity<String> keepAlive() {
-        return ResponseEntity.ok("OK");
-    }
-
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());
